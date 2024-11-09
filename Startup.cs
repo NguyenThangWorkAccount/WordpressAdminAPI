@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Google.Apis.Sheets.v4;
 using Google.Apis.Services;
-using WordpressAdminAPI.Utilities;
+using WordpressAdminApi.Utilities;
 
 namespace WordpressAdminApi
 {

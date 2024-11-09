@@ -2,7 +2,7 @@
 using Google.Apis.Services;
 using Google.Apis.Sheets.v4;
 
-namespace WordpressAdminAPI.Utilities
+namespace WordpressAdminApi.Utilities
 {
     public class SheetsServiceInitializer
     {
