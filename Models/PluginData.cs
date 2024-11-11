@@ -1,4 +1,4 @@
-﻿namespace WordpressAdminApi.Controllers
+﻿namespace WordpressAdmin.API.Controllers
 {
     public partial class WordpressAdminController
     {
@@ -24,19 +24,19 @@
             {
                 var result = new Dictionary<string, object>
                 {
-                    { "title", Title }
+                    { "Title", Title }
                 };
 
                 // Add InstallPath only if it's not empty
                 if (!string.IsNullOrEmpty(InstallPath))
                 {
-                    result.Add("installPath", InstallPath);
+                    result.Add("InstallPath", InstallPath);
                 }
 
                 // Add NeedToSetup only if it's true
                 if (NeedToSetup)
                 {
-                    result.Add("needToSetup", NeedToSetup);
+                    result.Add("NeedToSetup", NeedToSetup);
 
                     // Add all fields in AdditionalSetupFields to the top level
                     if (AdditionalSetupFields != null)

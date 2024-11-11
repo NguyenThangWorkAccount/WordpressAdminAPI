@@ -1,4 +1,4 @@
-﻿namespace WordpressAdminApi.Models
+﻿namespace WordpressAdmin.API.Models
 {
     public class UserData
     {

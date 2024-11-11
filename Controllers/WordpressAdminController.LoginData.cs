@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using WordpressAdminApi.Models;
+using WordpressAdmin.API.Models;
 
-namespace WordpressAdminApi.Controllers
+namespace WordpressAdmin.API.Controllers
 {
     public partial class WordpressAdminController
     {
@@ -34,6 +34,10 @@ namespace WordpressAdminApi.Controllers
                 return null; // No data available beyond the header
             }
 
+            // Find the index of the "PEPassword" column
+            var headerRow = rows[0]; // Assume the first row is the header
+            var pePasswordIndex = headerRow.IndexOf("PEPassword");
+
             lock (_lock)
             {
                 // Iterate over rows to find the next unprocessed row
@@ -48,16 +52,19 @@ namespace WordpressAdminApi.Controllers
                     var loginUrls = row.ElementAtOrDefault(0)?.ToString()?.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
                     var usernames = row.ElementAtOrDefault(1)?.ToString()?.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
                     var passwords = row.ElementAtOrDefault(2)?.ToString()?.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                    var pePasswords = pePasswordIndex >= 0
+                        ? row.ElementAtOrDefault(pePasswordIndex)?.ToString()?.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries)
+                        : null;
 
                     // Skip if any of the required fields is empty
-                    if (loginUrls == null || !loginUrls.Any() || usernames == null || !usernames.Any() || passwords == null || !passwords.Any())
+                    if (loginUrls == null || !loginUrls.Any() || usernames == null || !usernames.Any() || passwords == null || !passwords.Any() || pePasswords == null || !pePasswords.Any())
                     {
                         continue;
                     }
 
                     _processedRowIndices.Add(i); // Mark this row as processed
 
-                    return new LoginData(loginUrls, usernames, passwords);
+                    return new LoginData(loginUrls, usernames, passwords, pePasswords); // Include the PEPassword values
                 }
             }
 

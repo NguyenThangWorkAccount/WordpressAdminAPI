@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WordpressAdminApi.Controllers
+namespace WordpressAdmin.API.Controllers
 {
     public partial class WordpressAdminController
     {

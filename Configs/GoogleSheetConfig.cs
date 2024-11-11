@@ -1,4 +1,4 @@
-﻿namespace WordpressAdminApi
+﻿namespace WordpressAdmin.API
 {
     public class GoogleSheetsConfig
     {

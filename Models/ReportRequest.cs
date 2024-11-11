@@ -1,4 +1,4 @@
-﻿namespace WordpressAdminApi.Controllers
+﻿namespace WordpressAdmin.API.Controllers
 {
     public partial class WordpressAdminController
     {
