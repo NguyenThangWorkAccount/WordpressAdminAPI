@@ -34,13 +34,14 @@ namespace WordpressAdmin.API.Controllers
                        .Select(row =>
                        {
                            var title = row.ElementAtOrDefault(0)?.ToString() ?? string.Empty;
-                           var installPath = row.ElementAtOrDefault(1)?.ToString();
-                           var needToSetup = bool.TryParse(row.ElementAtOrDefault(2)?.ToString(), out var setup) && setup;
-                           var additionalSetupInfoJson = row.ElementAtOrDefault(3)?.ToString();
+                           var slug = row.ElementAtOrDefault(1)?.ToString() ?? string.Empty;
+                           var installPath = row.ElementAtOrDefault(2)?.ToString() ?? string.Empty;
+                           var needToSetup = bool.TryParse(row.ElementAtOrDefault(3)?.ToString(), out var setup) && setup;
+                           var additionalSetupInfoJson = row.ElementAtOrDefault(4)?.ToString();
                            var additionalSetupInfo = ParseAdditionalSetupInfo(additionalSetupInfoJson ?? string.Empty);
 
                            // Create the PluginData instance
-                           return new PluginData(title, installPath ?? string.Empty, needToSetup, additionalSetupInfo);
+                           return new PluginData(title, slug, installPath, needToSetup, additionalSetupInfo);
                        });
         }
 
