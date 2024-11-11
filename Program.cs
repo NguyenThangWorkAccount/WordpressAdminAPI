@@ -7,7 +7,7 @@ using System.Net.Sockets;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace WordpressAdminApi
+namespace WordpressAdmin.API
 {
     public class Program
     {
@@ -191,30 +191,22 @@ namespace WordpressAdminApi
             return pid;
         }
 
-        private static IHostBuilder CreateHostBuilder(string[] args, string port, string apiKeyPath, string sheetId) 
+        private static IHostBuilder CreateHostBuilder(string[] args, string port, string apiKeyPath, string sheetId)
         {
             return Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseUrls($"http://localhost:{port}"); 
-                    webBuilder.ConfigureKestrel(options =>
-                    {
-                        options.ListenLocalhost(int.Parse(port));
-                    });
-
+                    webBuilder.UseUrls($"http://localhost:{port}");
                 })
-                .ConfigureServices((hostContext, services) =>
+                .ConfigureAppConfiguration((hostContext, config) =>
                 {
-                    var config = new ConfigurationBuilder()
-                        .AddInMemoryCollection(new[]
-                        {
-                            new KeyValuePair<string, string>("AppConfig:Port", port),
-                            new KeyValuePair<string, string>("GoogleSheetsConfig:ApiKeyPath", apiKeyPath),
-                            new KeyValuePair<string, string>("GoogleSheetsConfig:SheetId", sheetId),
-                        })
-                        .Build();
-                    services.AddSingleton<IConfiguration>(config);
+                    config.AddInMemoryCollection(new[]
+                    {
+                new KeyValuePair<string, string>("AppConfig:Port", port),
+                new KeyValuePair<string, string>("GoogleSheetsConfig:ApiKeyPath", apiKeyPath),
+                new KeyValuePair<string, string>("GoogleSheetsConfig:SheetId", sheetId),
+                    });
                 });
         }
     }

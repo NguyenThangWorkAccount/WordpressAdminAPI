@@ -5,7 +5,7 @@ using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace WordpressAdminApi.Controllers
+namespace WordpressAdmin.API.Controllers
 {
     public partial class WordpressAdminController
     {

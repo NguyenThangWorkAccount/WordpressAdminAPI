@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WordpressAdminApi.Models
+namespace WordpressAdmin.API.Models
 {
     public class Password
     {

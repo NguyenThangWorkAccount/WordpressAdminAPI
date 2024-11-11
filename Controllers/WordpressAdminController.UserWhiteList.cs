@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using System.Linq;
-using WordpressAdminApi.Models;
+using WordpressAdmin.API.Models;
 
-namespace WordpressAdminApi.Controllers
+namespace WordpressAdmin.API.Controllers
 {
     public partial class WordpressAdminController
     {
@@ -43,7 +43,7 @@ namespace WordpressAdminApi.Controllers
         /// <returns>A collection of User objects.</returns>
         private IEnumerable<UserData> FetchUserWhiteList()
         {
-            const string sheetRange = "user_white_list";
+            const string sheetRange = "white_list";
             var request = _sheetsService.Spreadsheets.Values.Get(_sheetId, sheetRange);
             var response = request.Execute();
             var rows = response.Values;

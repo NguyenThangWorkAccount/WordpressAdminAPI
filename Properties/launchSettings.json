@@ -1,23 +1,15 @@
-﻿{
-  "$schema": "https://json.schemastore.org/launchsettings.json",
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:44118",
-      "sslPort": 44365
-    }
-  },
+{
   "profiles": {
-    "WordpressAdminAPI": {
+    "WordpressAdmin.API": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
+      "commandLineArgs": "-start -port 400 -apiKeyPath \"C:\\Users\\Nguye\\Downloads\\wordpressadministrationproject-4aedd3b6e88a.json\" -sheetId \"1iv_80XnT3l5Q7IwTk6IevEVu2MMZ_uTVZ-BG8nFmWHw\"",
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7148;http://localhost:5065",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7148;http://localhost:5065"
     },
     "IIS Express": {
       "commandName": "IISExpress",
@@ -26,6 +18,15 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+    }
+  },
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:44118",
+      "sslPort": 44365
     }
   }
 }
